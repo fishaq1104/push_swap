@@ -6,7 +6,7 @@
 /*   By: fishaq <fishaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 17:21:29 by fishaq            #+#    #+#             */
-/*   Updated: 2024/05/18 21:56:01 by fishaq           ###   ########.fr       */
+/*   Updated: 2024/05/22 14:31:46 by fishaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	current_index(t_stack_node *stack)
 	i = 0;
 	if (!stack)
 		return ;
-	median = stack_len(stack) / 2;
+	median = (stack_len(stack) / 2);
 	while (stack)
 	{
 		stack->index = i;
@@ -35,9 +35,9 @@ void	current_index(t_stack_node *stack)
 
 static void	set_target_a(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node		*current_b;
-	t_stack_node		*target_node;
-	long				best;
+	t_stack_node	*current_b;
+	t_stack_node	*target_node;
+	long			best;
 
 	while (a)
 	{

@@ -6,16 +6,17 @@
 /*   By: fishaq <fishaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:13:40 by fishaq            #+#    #+#             */
-/*   Updated: 2024/05/18 21:52:53 by fishaq           ###   ########.fr       */
+/*   Updated: 2024/05/22 19:46:17 by fishaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error_free(t_stack_node **a)
+void	error_free(t_stack_node **a, char **am)
 {
 	free_stack(a);
-	ft_printf("Error\n");
+	free_matrix(am);
+	write(2, "Error\n", 6);
 	exit(1);
 }
 
@@ -64,14 +65,15 @@ static void	append_node(t_stack_node **stack, int nbr)
 	t_stack_node	*node;
 	t_stack_node	*last_node;
 
-	if (stack == NULL)
+	if (!stack)
 		return ;
 	node = malloc(sizeof(t_stack_node));
-	if (node == NULL)
+	if (!node)
 		return ;
 	node->next = NULL;
+	node->cheapest = 0;
 	node->nbr = nbr;
-	if (*stack == NULL)
+	if (!(*stack))
 	{
 		*stack = node;
 		node->prev = NULL;
@@ -84,7 +86,7 @@ static void	append_node(t_stack_node **stack, int nbr)
 	}
 }
 
-void	stack_init(t_stack_node **a, char **av)
+void	stack_init(t_stack_node **a, char **av, char **am)
 {
 	long	nbr;
 	int		i;
@@ -93,12 +95,12 @@ void	stack_init(t_stack_node **a, char **av)
 	while (av[i])
 	{
 		if (error_syntax(av[i]))
-			error_free(a);
+			error_free(a, am);
 		nbr = ft_atol(av[i]);
 		if (nbr > INT_MAX || nbr < INT_MIN)
-			error_free(a);
+			error_free(a, am);
 		if (error_reptition(*a, (int)nbr))
-			error_free(a);
+			error_free(a, am);
 		append_node(a, (int)nbr);
 		i++;
 	}

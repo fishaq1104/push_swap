@@ -6,7 +6,7 @@
 /*   By: fishaq <fishaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 23:38:25 by fishaq            #+#    #+#             */
-/*   Updated: 2024/05/14 18:16:39 by fishaq           ###   ########.fr       */
+/*   Updated: 2024/07/30 16:02:54 by fishaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static	char	*get_next_word(char *str, char c)
 	while ((str[i] != c) && str[i])
 		word[j++] = str[i++];
 	word[j] = '\0';
-	return (word); 
+	return (word);
 }
 
 char	**my_split(char *str, char s)

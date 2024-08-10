@@ -6,7 +6,7 @@
 /*   By: fishaq <fishaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 14:23:59 by fishaq            #+#    #+#             */
-/*   Updated: 2024/05/18 21:53:02 by fishaq           ###   ########.fr       */
+/*   Updated: 2024/05/19 21:12:37 by fishaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_stack_node	*find_last_node(t_stack_node *n)
 {
-	if (n == NULL)
+	if (!n)
 		return (NULL);
-	while (n->next != NULL)
+	while (n->next)
 		n = n->next;
 	return (n);
 }

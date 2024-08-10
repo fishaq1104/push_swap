@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fishaq <fishaq@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/10 22:16:40 by fishaq            #+#    #+#             */
-/*   Updated: 2024/05/22 20:08:53 by fishaq           ###   ########.fr       */
+/*   Created: 2024/07/30 15:26:04 by fishaq            #+#    #+#             */
+/*   Updated: 2024/07/31 15:36:13 by fishaq           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	check_spaces(int ac, char **av)
 {
@@ -87,31 +87,24 @@ char	**get_strings(int ac, char **av)
 	return (string);
 }
 
-int	main(int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
-	char			**str;
+	size_t			i;
+	unsigned char	*c1;
+	unsigned char	*c2;
 
-	a = NULL;
-	b = NULL;
-	str = NULL;
-	if (ac == 1 || (2 == ac && !av[1][0]))
+	i = 0;
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	if (!s1)
 		return (1);
-	check_spaces(ac, av);
-	if (ac >= 2)
-		str = get_strings(ac, av);
-	stack_init(&a, (str + 1), str);
-	if (!stack_sorted(a))
+	while (i < n)
 	{
-		if (stack_len(a) == 2)
-			sa(&a, false);
-		else if (stack_len(a) == 3)
-			sort_three(&a);
-		else
-			sort_stacks(&a, &b);
+		if (!c2[i] && !c1[i])
+			return (0);
+		if (c1[i] != c2[i])
+			return (c1[i] - c2[i]);
+		i++;
 	}
-	free_matrix(str);
-	free_stack(&a);
 	return (0);
 }
